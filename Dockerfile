@@ -23,6 +23,7 @@ RUN update-ca-certificates --verbose &&\
     apt-get autoclean && apt-get autoremove &&\
     rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/*
 
+
 EXPOSE 80 443 8080 8443
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 CMD ["/opt/bin/entry.sh"]
