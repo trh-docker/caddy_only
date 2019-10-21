@@ -36,6 +36,8 @@ import (
         _ "github.com/caddyserver/caddy/caddyhttp/timeouts"
         _ "github.com/caddyserver/caddy/caddyhttp/websocket"
         _ "github.com/caddyserver/caddy/onevent"
+        //cors
+        _ "github.com/captncraig/cors"
         // 3rd party plugins
         // _ "github.com/caddyserver/dnsproviders/digitalocean"
         // docker proxy
