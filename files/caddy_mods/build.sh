@@ -1,5 +1,5 @@
 #!/bin/bash
-export GOOS=linux
-go build -o bin\caddy2 cmd\caddy\main.go
+mkdir /opt/caddy_build/bin
+go build -o /opt/caddy_build/caddy/bin/caddy2 /opt/caddy_build/cmd/caddy/main.go
 export GOOS=windows
-go build -o bin\caddy2.exe cmd\caddy\main.go
+go build -o /opt/caddy_build/caddy/bin/caddy2.exe /opt/caddy_build/cmd/caddy/main.go
