@@ -20,15 +20,11 @@ RUN apt-get update && apt-get install -y gcc &&\
     mkdir /opt/caddy_build/bin &&\
     go get -u github.com/caddyserver/xcaddy/cmd/xcaddy
    
-RUN xcaddy build \
-    --with github.com/caddy-dns/lego-deprecated
-	--with github.com/abiosoft/caddy-exec &&\
+RUN xcaddy build --with github.com/caddy-dns/lego-deprecated --with github.com/abiosoft/caddy-exec &&\
     mv caddy /opt/caddy_build/bin/
 
 ENV GOOS=windows
-RUN xcaddy build \
-    --with github.com/caddy-dns/lego-deprecated
-	--with github.com/abiosoft/caddy-exec &&\
+RUN xcaddy build --with github.com/caddy-dns/lego-deprecated --with github.com/abiosoft/caddy-exec &&\
     mv caddy /opt/caddy_build/bin/caddy.exe
 
 
