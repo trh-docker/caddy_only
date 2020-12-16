@@ -25,9 +25,9 @@ RUN apt-get update && apt-get install -y gcc &&\
 RUN cd caddy &&\
     go mod vendor &&\
     mkdir /opt/caddy_build/bin &&\
-    go build -o /opt/caddy_build/caddy/bin/caddy2 /opt/caddy_build/caddy/cmd/caddy/main.go &&\
-    export GOOS=windows &&\
-    go build -o /opt/caddy_build/caddy/bin/caddy2.exe /opt/caddy_build/caddy/cmd/caddy/main.go
+    go build -o /opt/caddy_build/caddy/bin/caddy2 /opt/caddy_build/caddy/cmd/caddy/main.go
+ENV GOOS=windows
+RUN go build -o /opt/caddy_build/caddy/bin/caddy2.exe /opt/caddy_build/caddy/cmd/caddy/main.go
 
 FROM quay.io/spivegin/tlmbasedebian
 ENV DINIT=1.2.2 
