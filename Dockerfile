@@ -23,8 +23,10 @@ RUN apt-get update && apt-get install -y gcc &&\
      
 
 RUN cd caddy &&\
-    go mod vendor &&\
-    mkdir /opt/caddy_build/bin &&\
+    go mod tidy &&\
+    go mod vendor
+
+RUN mkdir /opt/caddy_build/bin &&\
     cd /opt/caddy_build/caddy/cmd &&\
     go build -o /opt/caddy_build/caddy/bin/caddy2 main.go
 
