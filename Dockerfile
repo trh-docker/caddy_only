@@ -17,22 +17,20 @@ RUN ssh-keyscan -H github.com > ~/.ssh/known_hosts &&\
 WORKDIR /opt/caddy_build/
 ADD files/caddy_mods/* /opt/caddy_build/
 RUN apt-get update && apt-get install -y gcc &&\
-    git clone git@github.com:caddyserver/caddy.git &&\
-    cp build.sh caddy &&\
-    cp main.go caddy 
-     
-
-RUN cd caddy &&\
-    go mod tidy &&\
-    go mod vendor
-
-RUN mkdir /opt/caddy_build/bin &&\
-    cd /opt/caddy_build/caddy/cmd &&\
-    go build -o /opt/caddy_build/caddy/bin/caddy2 main.go
+    mkdir /opt/caddy_build/bin &&\
+    go get -u github.com/caddyserver/xcaddy/cmd/xcaddy
+   
+RUN xcaddy build \
+    --with github.com/caddy-dns/lego-deprecated
+	--with github.com/abiosoft/caddy-exec &&\
+    mv caddy /opt/caddy_build/bin/
 
 ENV GOOS=windows
-RUN cd /opt/caddy_build/caddy/cmd &&\
-    go build -o /opt/caddy_build/caddy/bin/caddy2.exe main.go
+RUN xcaddy build \
+    --with github.com/caddy-dns/lego-deprecated
+	--with github.com/abiosoft/caddy-exec &&\
+    mv caddy /opt/caddy_build/bin/caddy.exe
+
 
 FROM quay.io/spivegin/tlmbasedebian
 ENV DINIT=1.2.2 
