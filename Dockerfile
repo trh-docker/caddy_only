@@ -15,7 +15,6 @@ RUN ssh-keyscan -H github.com > ~/.ssh/known_hosts &&\
 
 
 WORKDIR /opt/caddy_build/
-ADD files/caddy_mods/* /opt/caddy_build/
 RUN apt-get update && apt-get install -y gcc &&\
     mkdir /opt/caddy_build/bin &&\
     go get -u github.com/caddyserver/xcaddy/cmd/xcaddy
