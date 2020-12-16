@@ -9,6 +9,7 @@ RUN ssh-keyscan -H github.com > ~/.ssh/known_hosts &&\
     ssh-keyscan -H gitlab.com >> ~/.ssh/known_hosts &&\
     ssh-keyscan -H go.opencensus.io >> ~/.ssh/known_hosts &&\
     ssh-keyscan -H cloud.google.com >> ~/.ssh/known_hosts &&\
+    ssh-keyscan -H google.golang.org >> ~/.ssh/known_hosts &&\
     ssh-keyscan -H golang.org >> ~/.ssh/known_hosts &&\
     ssh-keyscan -H git.apache.org >> ~/.ssh/known_hosts
 
