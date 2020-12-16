@@ -17,10 +17,11 @@ ADD files/caddy_mods/* /opt/caddy_build/
 RUN apt-get update && apt-get install -y gcc &&\
     git clone git@github.com:caddyserver/caddy.git &&\
     cp build.sh caddy &&\
-    cp main.go caddy &&\
-    cd caddy 
+    cp main.go caddy 
+     
 
-RUN go mod vendor &&\
+RUN cd caddy &&\
+    go mod vendor &&\
     bash build.sh
 
 FROM quay.io/spivegin/tlmbasedebian
