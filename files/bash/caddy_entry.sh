@@ -1,3 +1,2 @@
 #!/bin/bash
-
-caddy -conf /opt/tlm/Caddyfile
+caddy run -conf /opt/tlm/Caddyfile
