@@ -37,7 +37,7 @@ ADD https://github.com/Yelp/dumb-init/releases/download/v${DINIT}/dumb-init_${DI
 ADD https://raw.githubusercontent.com/adbegon/pub/master/AdfreeZoneSSL.crt /usr/local/share/ca-certificates/
 ADD files/bash/caddy_entry.sh /opt/bin/entry.sh
 RUN apt update && apt upgrade -y &&\
-    apt install -y lsof curl nano
+    apt install -y lsof curl nano &&\
     update-ca-certificates --verbose &&\
     chmod +x /opt/bin/caddy &&\
     ln -s /opt/bin/caddy /bin/caddy &&\
